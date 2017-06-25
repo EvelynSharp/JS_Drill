@@ -26,8 +26,22 @@ const fToC = ( f ) => {
 //   - Write a function that takes in a string and returns the number of vowels in the string
 
 const vowelCount = ( string ) => {
+  let vowelArr = [ 'a', 'e', 'i', 'o', 'u' ];
+  // let counter = 0;
+  return string.toLowerCase().split("").reduce( (acc,letter) => vowelArr.includes(letter) ? ++acc : acc, 0);
 
+  //
+  // let stringArr = string.toLowerCase().split("");
+  // for ( i = 0; i < stringArr.length; i++ ) {
+  //   if( vowelArr.includes(stringArr[i])) {
+  //     counter++
+  //   }
+  // }
+  // return counter;
 }
+
+// console.log( vowelCount('nosebeareeiou'))
+
 
 // 5.  Dice
 //   - Write a function that rolls 2-6 sided dice and returns the two values in an array
@@ -98,6 +112,7 @@ const fibonacci = ( num ) => {
   let curNum = 1;
   if ( num <= 0) {
     console.log( "number must be above zero");
+
   } else {
     for( i = 3; i <= num; i++) {
       let tempNum = preNum;
@@ -108,12 +123,11 @@ const fibonacci = ( num ) => {
   }
 }
 
-console.log(fibonacci(8) )
-console.log(fibonacci(0) )
+// console.log(fibonacci(8) )
+// console.log(fibonacci(0) )
 
 // Bonus: Roman Numeral Converter
 //   - Write a function that takes a normal number and returns the roman numeral equivalent.  Some relevant info:
-//
 // The Romans wrote numbers using letters - I, V, X, L, C, D, M. (notice
 // these letters have lots of straight lines and are hence easy to hack
 // into stone tablets).
@@ -143,3 +157,68 @@ console.log(fibonacci(0) )
 //
 // 2000=MM
 // 8=VIII
+
+
+const getRoman = ( num, unit, upSemi, upUnit ) => {
+  let result = "";
+  if( num === 4 ) {
+    result = unit + upSemi;
+  } else if ( num === 5 ) {
+    result = upSemi;
+  } else if (num === 9) {
+    result = unit + upUnit;
+  } else if ( num <= 3 ) {
+    for ( i = 1; i <= num; i++ ) {
+      result = result + unit;
+    }
+  } else {
+    result= upSemi;
+    for ( i = 6; i <= num; i++ ) {
+      result = result + unit;
+    }
+  }
+  return result;
+}
+
+const romanNum = (num) => {
+  let numArr = (""+num).split("").map( n => {return parseInt(n)});
+  let digits = numArr.length;
+  let counter=0;
+  let num1 = num2 = num3 = num4 = "";
+  let finalNum;
+  if (digits === 4) {
+    for ( i = 1; i <= numArr[counter]; i++ ) {
+      num1 = num1 + 'M';
+    }
+    counter++;
+  }
+
+  if ( digits >= 3 ) {
+    let num = numArr[counter];
+    num2 = getRoman( num, 'C', 'D', 'M');
+    counter++;
+  }
+
+  if ( digits >= 2 ) {
+    let num = numArr[counter];
+    num3 = getRoman( num, 'X', 'L', 'C');
+    counter++;
+  }
+
+  if ( digits >= 1 ) {
+    let num = numArr[counter];
+    num4 = getRoman( num, 'I', 'V', 'X');
+    counter++;
+  }
+
+  finalNum = num1+num2+num3+num4;
+  return finalNum;
+}
+
+//console.log( romanNum(905))
+
+// unit letter for each step up: I, X, C, M
+// semi-unit letter for every 5 units each step up: V, L, D,
+// if 4th unit, present as semi-unit - unit
+//if 9th unit, present as the next step up unit - cur-step unit
+//check from left to right, one by one, and skp zeros
