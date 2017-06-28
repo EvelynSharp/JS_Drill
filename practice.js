@@ -15,3 +15,7 @@ function duckDuckGoose(players, goose) {
 function duckDuckGoose1(players, goose) {
   return players[(goose-1)%players.length].name
 }
+
+
+// Write a function f (in C# F) that returns Hello, world! string. But there is one thing, you cannot use helowrd letters.
+// The C# test cases ignore checking for banned letters in words class, string and public. Have fun!
