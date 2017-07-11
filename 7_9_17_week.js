@@ -76,3 +76,43 @@ const battle = (player1, player2) => {
     player2: player2.filter((c, i) => !player1[i] || c[1] > player1[i][0]),
   }
 }
+
+
+// 7.11.17
+
+// Write Number in Expanded Form - Part 2
+//
+// This is version 2 of my 'Write Number in Exanded Form' Kata.
+//
+// You will be given a number and you will need to return it as a string in Expanded Form. For example:
+//
+// expandedForm(1.24); // should return '1 + 2/10 + 4/100'
+// expandedForm(7.304); // should return '7 + 3/10 + 4/1000'
+// expandedForm(0.04); // should return '4/100'
+
+function expandedForm(num) {
+  let numArr = num.toString().split('');
+  let resultArr = [];
+  if( !numArr.includes('.') ) {
+    resultArr = numArr.map( (n, i) => {
+      let p = numArr.length - i - 1;
+      resultArr.push( (Math.pow( 10, p ) * Number(n) ).toString() );
+    });
+  } else {
+    let breakIndex = numArr.indexOf('.');
+    for ( let i = 0; i < breakIndex; i++) {
+      if ( numArr[i] !== '0') {
+        let s1 = + Number(numArr[i]) * Math.pow( 10, (breakIndex-i-1) )
+        resultArr.push(s1);
+      }
+    }
+    for ( let i = breakIndex + 1; i < numArr.length; i++) {
+      if ( numArr[i] !== '0') {
+        let s2 =  Number(numArr[i])+ '/' + Math.pow( 10, ( i - breakIndex) )
+        resultArr.push(s2);
+      }
+    }
+  }
+  return resultArr.join(' + ');
+
+}
