@@ -156,7 +156,7 @@ function palindrome(num) {
     if ( newnumArr2.join('') === reverseArr2.join('') && num-i >= 10) {
       return ( num - i )
     }
-  }  
+  }
 }
 
 function isPalindrome(num){
@@ -167,5 +167,45 @@ function palindrome(num) {
   for(i=0; 1==1; i++){
     if(isPalindrome(num+i)) return num+i;
     if(isPalindrome(num-i)) return num-i;
+  }
+}
+
+
+// Write
+//
+// function deepSort(arr, asc)
+// that, given an array of any depth, sorts it in the order given by asc.
+// When asc === true then sort ascending, otherwise descending.
+//
+// For example:
+//
+// deepSort([1, [2, 4], 3, 8]) === [8,[4,2],3,1]
+// // When a number is compared to an array or an array to another array,
+// // you need to get the sum of the array. In this case [2,4] === 6. 6 is the second highest
+// // value in the entire array and thus [2,4] is second when sorting descending. The array [2,4]
+// // is also sorted based on asc argument, hence [4,2]
+//
+// deepSort([1, 2, 3, 4, [-5,-4]], true)) === [[-5,-4],1,2,3,4]
+// deepSort([1, [2, 3, [4, 5, [9, 11], 1, 8], 6], [20, 7, 8]], false) === [[[[11, 9], 8, 5, 4, 1], 6, 3, 2], [20, 8, 7], 1]
+// deepSort([2, [1, 1], [1, 1], 2], true) === [2, [1, 1], [1, 1], 2] // already sorted, this is equivalent to [2, 2, 2, 2]
+
+
+function deepSort(arr, asc) {
+   let newArr = arr.sort( (a,b) => {
+     let a1, b1;
+     a1 = addArr(a);
+     b1 = addArr(b);
+     return asc === true ? a1-b1 : b1-a1
+   }).map( v => Array.isArray(v) ? deepSort(v, asc) : v);
+   return newArr
+}
+
+function addArr( arr ) {
+  if(Array.isArray(arr)) {
+    return arr.reduce( (t, n) => {
+      let x = Array.isArray(n) ? addArr(n) : n;
+      return t += x }, 0)
+  } else {
+    return arr
   }
 }
