@@ -209,3 +209,64 @@ function addArr( arr ) {
     return arr
   }
 }
+
+
+function deepSort(arr, asc=false) {
+  const sum=x=>typeof x == 'number'?x:deepSort(x, asc).reduce((a,b)=>a+sum(b),0)
+  return arr.sort((a,b)=>(sum(a)>sum(b))==asc?1:-1)
+}
+
+
+
+// German music producer Herbert Von Klunkerkunt has been using the same formula to make industrial techno for over twenty years. Producing at 120 beats per minute, each 4-beat bar contains:
+//
+// 4 kick drum hits
+// 8 hihat hits
+// 2 clap hits
+// Write a programme that takes the number of minutes and returns the number of "kicks", "hihats" and "claps" Klunkerkunt will need to fill each bar of his new track with percussion in an array. The total number of kicks, hihats and claps should be rounded to the nearest integer.
+
+function perc (mins) {
+  if(mins < 1 || mins > 100 || !Number(mins) ) { return "invalid track time" }
+  return [ Math.round(120*mins)+" kicks",
+           Math.round(240*mins)+" hihats",
+           Math.round(60*mins)+" claps"]
+};
+
+
+
+// The function takes cents value (int) and needs to return the minimum number of coins combination of the same value.
+//
+// The function should return an array where
+// coins[0] = pennies ==> $00.01
+// coins[1] = nickles ==> $00.05
+// coins[2] = dimes ==> $00.10
+// coins[3] = quarters ==> $00.25
+//
+// So for example:
+// coinCombo(6) --> [1, 1, 0, 0]
+
+var coinCombo = function(cents) {
+  const coins = [25, 10, 5, 1]
+  let result = coins.map( c => {
+    let counter = 0;
+    while(cents >= c) {
+      cents -= c
+      counter++
+    }
+    return counter;
+  })
+  return result.reverse();
+}
+
+var coinCombo2 = function(cents) {
+  const coins = [25, 10, 5, 1]
+  let result = coins.map( c => {
+    let counter = 0;
+    if(cents >= c) {
+      counter = (cents - cents%c)/c
+      cents -= counter*c
+    }
+    return counter;
+  })
+  return result.reverse();
+}
