@@ -19,3 +19,17 @@ function digPow(n, p){
   }, 0)
   return sum%n === 0 ? sum/n : -1;
 }
+
+
+//7.17.17 6ku
+
+function findEvenIndex(arr)
+{
+  let result = -1;
+  for (let i = 0; i < arr.length; i++ ) {
+    let leftArrValue = arr.slice(0, i).reduce( (total, num) => { return total += num }, 0);
+    let rightArrValue = arr.slice(i+1).reduce( (total, num) => { return total += num }, 0);
+    if ( leftArrValue === rightArrValue ) { result = i }
+  }
+  return result;
+}
