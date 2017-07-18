@@ -21,7 +21,7 @@ function digPow(n, p){
 }
 
 
-//7.17.17 6ku
+//7.17.17 6ku & 7ku
 
 function findEvenIndex(arr)
 {
@@ -33,3 +33,26 @@ function findEvenIndex(arr)
   }
   return result;
 }
+
+//1.18.17 6ku
+// A digital root is the recursive sum of all the digits in a number. Given n, take the sum of the digits of n. If that value has two digits, continue reducing in this way until a single-digit number is produced. This is only applicable to the natural numbers.
+
+function digital_root(n) {
+  if( n >= 10) {
+    let numArr = String( n ).split('')
+    let sum = numArr.reduce( (t, num) => { return t += Number(num) }, 0)
+    return digital_root(sum)
+  } else {
+    return n;
+  }
+}
+
+
+// This time no story, no theory. The examples below show you how to write function accum:
+//
+// Examples:
+
+// accum("abcd");    // "A-Bb-Ccc-Dddd"
+// accum("RqaEzty"); // "R-Qq-Aaa-Eeee-Zzzzz-Tttttt-Yyyyyyy"
+// accum("cwAt");    // "C-Ww-Aaa-Tttt"
+// The parameter of accum is a string which includes only letters from a..z and A..Z.
