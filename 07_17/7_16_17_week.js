@@ -56,3 +56,13 @@ function digital_root(n) {
 // accum("RqaEzty"); // "R-Qq-Aaa-Eeee-Zzzzz-Tttttt-Yyyyyyy"
 // accum("cwAt");    // "C-Ww-Aaa-Tttt"
 // The parameter of accum is a string which includes only letters from a..z and A..Z.
+
+function accum(s) {
+  let strArr = s.toLowerCase().split('').map( (l, i) => {
+    let str = '';
+    for ( let n = 1; n <= i+1; n++ ) {
+      str = str + ( n === 1 ? l.toUpperCase() : l )
+    }
+    return str;
+  })
+  return strArr.join('-');
