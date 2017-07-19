@@ -66,3 +66,18 @@ function accum(s) {
     return str;
   })
   return strArr.join('-');
+
+
+//7.19.17
+//Create a function isAlt() that accepts a string as an argument and validates whether the vowels (a, e, i, o, u) and consonants are in alternate order.
+
+function isAlt(word) {
+  let vowels = ['a', 'e', 'i', 'o', 'u'];
+  let wordArr = word.split('');
+  for ( let i = 0; i< wordArr.length; i++) {
+    if( i > 0 ) {
+      if( vowels.includes( wordArr[i] ) === vowels.includes( wordArr[i-1] ) ) { return false }
+    }
+  }
+  return true;
+}
