@@ -144,3 +144,44 @@ function isValidWalk(walk) {
 
   return dt === 10 && dx === 0 && dy === 0
 }
+
+
+//7.22.17
+// Write a function dirReduc which will take an array of strings and returns an array of strings with the needless directions removed (W<->E or S<->N side by side).
+
+function dirReduc(arr){
+  let counter = 0;
+  let i = 0;
+  while ( i < arr.length-1 ) {
+    let tempArr = [ arr[i], arr[i+1] ]
+    i++
+    if ( tempArr.includes('NORTH') && tempArr.includes('SOUTH') ) {
+      i--;
+      arr.splice(i,2);
+      counter++;
+    }
+    if ( tempArr.includes('EAST') && tempArr.includes('WEST') ) {
+      i--;
+      arr.splice(i,2);
+      counter++;
+    }
+  }
+  if(counter > 0)
+    dirReduc(arr)
+  return arr
+
+}
+
+
+//clever
+function dirReduc(plan) {
+  var opposite = {
+    'NORTH': 'SOUTH', 'EAST': 'WEST', 'SOUTH': 'NORTH', 'WEST': 'EAST'};
+  return plan.reduce(function(dirs, dir){
+      if (dirs[dirs.length - 1] === opposite[dir])
+        dirs.pop();
+      else
+        dirs.push(dir);
+      return dirs;
+    }, []);
+}
