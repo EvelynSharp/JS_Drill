@@ -42,3 +42,21 @@ function 2(word){
     })
     .join('');
 }
+
+
+// //7.25.17
+// The function has two input variables:
+//
+// customers: an array (list in python) of positive integers representing the queue. Each integer represents a customer, and its value is the amount of time they require to check out.
+// n: a positive integer, the number of checkout tills.
+// The function should return an integer, the total time required.
+
+function queueTime(customers, n) {
+  let count = customers.slice(0, n);
+  for ( let i = n; i<customers.length; i++) {
+    let min = Math.min( ...count )
+    let minIndex = count.indexOf(min)
+    count[minIndex] = min + customers[i]
+  }
+  return count[0] ? Math.max(...count) : 0;
+}
