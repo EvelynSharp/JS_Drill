@@ -60,3 +60,21 @@ function queueTime(customers, n) {
   }
   return count[0] ? Math.max(...count) : 0;
 }
+
+
+// 
+// // 7.26.17
+// Given: an array containing hashes of names
+//
+// Return: a string formatted as a list of names separated by commas except for the last two names, which should be separated by an ampersand.
+function list(names){
+  let arr = names.map( n => n.name )
+  let r = arr[0];
+  if ( arr.length === 1 ) { return r }
+  if ( arr.length < 1 ) { return '' }
+  for ( let i = 1; i < arr.length ; i++ ) {
+    let addition = i === arr.length - 1 ? ' & ' : ', '
+    r += (addition + arr[i])
+  }
+  return r;
+}
