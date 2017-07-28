@@ -103,4 +103,20 @@ function order(words){
   return words.split(' ').sort(function(a, b){
       return a.match(/\d/) - b.match(/\d/);
    }).join(' ');
-}    
+}
+
+//7.28.17
+// Write a function that will return the count of distinct case-insensitive alphabetic characters and numeric digits that occur more than once in the input string. The input string can be assumed to contain only alphabets (both uppercase and lowercase) and numeric digits.
+
+function duplicateCount(text){
+  let arr = text.toLowerCase().split('')
+  let unique = arr.filter( (l, i, t) => {return t.indexOf(l) === i});
+  let count = unique.map( u => { return arr.filter( l => l === u ).length });
+  return count.filter( n => n >1 ).length
+}
+
+function duplicateCount(text){
+  return text.toLowerCase().split('').filter(function(val, i, arr){
+    return arr.indexOf(val) !== i && arr.lastIndexOf(val) === i;
+  }).length;
+}
