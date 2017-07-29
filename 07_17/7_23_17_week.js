@@ -120,3 +120,23 @@ function duplicateCount(text){
     return arr.indexOf(val) !== i && arr.lastIndexOf(val) === i;
   }).length;
 }
+
+// 
+// //7.29/17
+//
+// Welcome. In this kata you are required to, given a string, replace every letter with its position in the alphabet. If anything in the text isn't a letter, ignore it and don't return it. a being 1, b being 2, etc. As an example:
+
+
+function alphabetPosition(text) {
+  let alphabet = 'abcdefghijklmnopqrstuvwxyz'.split('');
+  let arr = text.toLowerCase().match(/[a-z]+/g).join('').split('');
+  return arr.map( l => alphabet.indexOf(l) + 1 ).join(' ');
+}
+
+function alphabetPosition2(text) {
+  return text
+    .toUpperCase()
+    .match(/[a-z]/gi)
+    .map( (c) => c.charCodeAt() - 64)
+    .join(' ');
+}
