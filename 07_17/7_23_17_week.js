@@ -121,7 +121,7 @@ function duplicateCount(text){
   }).length;
 }
 
-// 
+//
 // //7.29/17
 //
 // Welcome. In this kata you are required to, given a string, replace every letter with its position in the alphabet. If anything in the text isn't a letter, ignore it and don't return it. a being 1, b being 2, etc. As an example:
@@ -139,4 +139,29 @@ function alphabetPosition2(text) {
     .match(/[a-z]/gi)
     .map( (c) => c.charCodeAt() - 64)
     .join(' ');
+}
+
+
+//7.30.17
+function towerBuilder(nFloors) {
+  let result = []
+  for ( let i = 1; i <= nFloors; i++) {
+    let num = 1 + (i-1)*2;
+    let str = buildfloor(nFloors-i, ' ') + buildfloor(num, '*') + buildfloor(nFloors-i, ' ');
+    result.push(str);
+  }
+  return result;
+}
+
+function buildfloor(n, block) {
+  let r = '';
+  for ( let i = 1; i <= n; i++) {r += block}
+  return r;
+}
+
+function towerBuilder1(n) {
+  return Array.from({length: n}, function(v, k) {
+    const spaces = ' '.repeat(n - k - 1);
+    return spaces + '*'.repeat(k + k + 1) + spaces;
+  });
 }
