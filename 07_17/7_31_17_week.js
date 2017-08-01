@@ -29,3 +29,14 @@ function sumDigPow(a, b) {
 function array_diff(a, b) {
   return a.filter( n => !b.includes(n) )
 }
+
+
+//8.1.17
+// Create a function named divisors that takes an integer and returns an array with all of the integer's divisors(except for 1 and the number itself). If the number is prime return the string '(integer) is prime' (use Either String a in Haskell and Result<Vec<u32>, String> in Rust).
+function divisors(integer) {
+  let result = [];
+  for ( let i = 2; i < integer; i++) {
+    if (integer%i === 0) { result.push(i) }
+  }
+  return result.length === 0 ? integer+' is prime' : result;
+};
