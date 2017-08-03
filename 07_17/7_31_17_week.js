@@ -64,3 +64,29 @@ function sortArray(array) {
   const odd = array.filter((x) => x % 2).sort((a,b) => a - b);
   return array.map((x) => x % 2 ? odd.shift() : x);
 }
+
+//8.3.17
+// Your task is to write a higher order function for chaining together a list of unary functions. In other words, it should return a function that does a left fold on the given functions.
+//
+// chained([a,b,c,d])(input)
+// Should yield the same result as
+//
+// d(c(b(a(input))))
+
+
+
+function chained(functions) {
+  return function(input) {
+    let result = input;
+    for ( let i = 0; i < functions.length; i++) {
+      result = functions[i](result);
+    }
+    return result;
+  }
+}
+
+function chained(functions) {
+  return function(input){
+    return functions.reduce(function(input, fn){ return fn(input) }, input);
+  }
+}
