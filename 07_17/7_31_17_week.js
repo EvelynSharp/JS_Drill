@@ -90,3 +90,46 @@ function chained(functions) {
     return functions.reduce(function(input, fn){ return fn(input) }, input);
   }
 }
+
+// //8.4.17
+// The input is a string str of digits. Cut the string into chunks (a chunk here is a substring of the initial string) of size sz (ignore the last chunk if its size is less than sz).
+//
+// If a chunk represents an integer such as the sum of the cubes of its digits is divisible by 2, reverse that chunk; otherwise rotate it to the left by one position. Put together these modified chunks and return the result as a string.
+//
+// If
+//
+// sz is <= 0 or if str is empty return ""
+// sz is greater (>) than the length of str it is impossible to take a chunk of size sz hence return "".
+
+
+function revrot(str, sz) {
+    if(str === '' || sz <= 0 || sz > str.length) {return ''}
+    let arr = str.match(new RegExp('.{1,' + sz + '}', 'g'));
+    if( arr[arr.length-1].length < sz) { arr.pop() }
+    let rArr = arr.map( s => {
+      let sArr = s.split('')
+      if ( sArr.reduce( (t,n) => { return t += Number(n)}, 0)%2 === 0 ) {
+        return sArr.reverse().join('');
+      } else {
+        let last = sArr.shift();
+        sArr.push(last);
+        return sArr.join('');
+      }
+    })
+   return rArr.join('')
+}
+
+
+function revrot1(str, sz) {
+  if (sz < 1 || sz > str.length)
+    return '';
+
+  let reverse = s => s.split('').reverse().join('');
+  let rotate  = s => s.slice(1) + s.slice(0, 1);
+  let sum_cubes = c => c.split('').reduce((a, b) => a + +b ** 3, 0);
+
+  return str
+    .match(new RegExp('.{' + sz + '}', 'g'))
+    .map(c => sum_cubes(c) % 2 ? rotate(c) : reverse(c))
+    .join('');
+}
