@@ -133,3 +133,16 @@ function revrot1(str, sz) {
     .map(c => sum_cubes(c) % 2 ? rotate(c) : reverse(c))
     .join('');
 }
+
+
+
+//8.5.17
+//Write a method that takes an array of consecutive (increasing) letters as input and that returns the missing letter in the array.
+function findMissingLetter(array){
+ let IndexArr = array.map( l => l.charCodeAt() );
+ let pre = IndexArr.reduce( ( p , n, i ) => {
+   if ( n + 2 === IndexArr[i+1] ) { p = n }
+   return p
+ }, 0 )
+ return String.fromCharCode(pre+1);
+}
