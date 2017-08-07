@@ -13,3 +13,63 @@ function narcissistic( value ) {
   }, 0)
   return sum === value;
 }
+
+//8.7.17
+// which takes in numbers num1 and num2 and returns 1 if there is a straight triple of a number at any place in num1 and also a straight double of the same number in num2.
+
+function tripledouble(num1, num2) {
+  let arr1 = (''+num1).split('');
+  let arr2 = (''+num2).split('');
+  let tripleNum = [], doubleNum = [];
+  let ifSame = false;
+  for ( let i = 0; i < arr1.length - 2; i++ ) {
+    if( arr1[i] === arr1[i+1] && arr1[i+2] === arr1[i+1] ) {
+      if( !tripleNum.includes(arr1[i]) ) {
+        tripleNum.push(arr1[i])
+      }
+    }
+  }
+  for ( let i = 0; i < arr2.length - 1; i++ ) {
+    if( arr2[i] === arr2[i+1] ) {
+      if( !doubleNum.includes(arr2[i]) ) {
+        doubleNum.push(arr2[i])
+      }
+    }
+  }
+  for ( let i = 0; i < tripleNum.length ; i++ ) {
+    if( doubleNum.includes(tripleNum[i]) ) {
+      ifSame = true;
+    }
+  }
+  return ifSame? 1 : 0;
+}
+
+
+function tripledouble1(num1, num2) {
+  for (let i = 0; i < 10; i++) {
+    if (new RegExp(`${i}{3}`).test(num1) && new RegExp(`${i}{2}`).test(num2)) {
+      return 1;
+    }
+  }
+  return 0;
+}
+
+function tripledouble2(num1, num2) {
+  let nums = [...Array(10).keys()];
+
+  return +nums.some(num =>
+    num1.toString().includes(num.toString().repeat(3)) &&
+    num2.toString().includes(num.toString().repeat(2))
+  );
+}
+
+function tripledouble3(num1, num2) {
+  var indexOf = String.prototype.indexOf
+  for (var i = 0; i < 10; i++) {
+    if (indexOf.call(num1, "" + i + i + i) >= 0 && indexOf.call(num2, "" + i + i) >= 0) {
+      return 1
+    }
+  }
+
+  return 0
+}
