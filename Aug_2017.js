@@ -73,3 +73,27 @@ function tripledouble3(num1, num2) {
 
   return 0
 }
+
+
+//8.8.17
+// In this kata you have to write a method that folds a given array of integers by the middle x-times.
+
+function foldArray(array, runs){
+  let result = [...array];
+  for ( let i = 1; i <= runs; i++ ) {
+    if ( result.length !== 1 ) {
+      let remainNum = result.length%2 === 0 ? result.length/2 : (result.length+1)/2
+      for ( let n = 0; n < Math.floor(result.length/2); n++) {
+        result[n] += result[result.length-1-n]
+      }
+      result = result.slice(0, remainNum)
+      }
+    }
+  return result;
+}
+
+function foldArray1(a, n) {
+  const r = [], c = a.slice();
+  while (c.length) r.push(c.pop() + (c.shift() || 0));
+  return n - 1 ? foldArray(r, n - 1) : r;
+}
