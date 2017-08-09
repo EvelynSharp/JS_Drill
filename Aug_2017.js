@@ -97,3 +97,19 @@ function foldArray1(a, n) {
   while (c.length) r.push(c.pop() + (c.shift() || 0));
   return n - 1 ? foldArray(r, n - 1) : r;
 }
+
+
+//8.9.17
+// In this Kata, you will implement The Luhn Algorithm, which is used to help validate credit card numbers.
+//
+// Given a positive integer of up to 16 digits, return true if it is a valid credit card number, and false if it is not.
+function validate(n){
+  let arr = (''+n).split('').map( n => Number(n) );
+  for ( let i = arr.length-2; i >=0; i -= 2) {arr[i] *= 2;}
+  let sum = arr.map( n => {
+    if ( n > 9 )
+      return ('' + n).split('').reduce( (t, x) => t += Number(x), 0)
+    return n
+  }).reduce( (t, n) => t += n, 0)
+  return sum%10 === 0? true : false
+}
