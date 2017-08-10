@@ -113,3 +113,29 @@ function validate(n){
   }).reduce( (t, n) => t += n, 0)
   return sum%10 === 0? true : false
 }
+
+//8.10.17
+// Given an array (arr) as an argument complete the function countSmileys that should return the total number of smiling faces.
+//
+// Rules for a smiling face:
+// -Each smiley face must contain a valid pair of eyes. Eyes can be marked as : or ;
+// -A smiley face can have a nose but it does not have to. Valid characters for a nose are - or ~
+// -Every smiling face must have a smiling mouth that should be marked with either ) or D.
+// No additional characters are allowed except for those mentioned.
+// Valid smiley face examples:
+// :) :D ;-D :~)
+// Invalid smiley faces:
+// ;( :> :} :]
+
+
+function countSmileys(arr) {
+  return arr.reduce( (c, s) => {
+    let sArr = s.split('');
+    let nose = sArr.length === 3 ? ['-', '~'].includes(sArr[1]) : true;
+    if ( nose && [':', ';'].includes(sArr[0]) && [')', 'D'].includes(sArr[sArr.length-1]) && sArr.length <=3) {
+      c++
+    }
+    return c;
+  }, 0)
+}
+const countSmileys1 = ss => ss.reduce((a, s) => a + /^[:;][-~]?[D)]$/.test(s), 0);
