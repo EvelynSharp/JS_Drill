@@ -139,3 +139,38 @@ function countSmileys(arr) {
   }, 0)
 }
 const countSmileys1 = ss => ss.reduce((a, s) => a + /^[:;][-~]?[D)]$/.test(s), 0);
+
+
+//8.11.17
+//
+// Longest Palindrome
+//
+// Find the length of the longest substring in the given string s that is the same in reverse.
+//
+// As an example, if the input was “I like racecars that go fast”, the substring (racecar) length would be 7.
+//
+// If the length of the input string is 0, return value must be 0.
+
+
+longestPalindrome=function(s){
+  var strArr = s.split('');
+  var len = strArr.length;
+  var count;
+  if(s.length === 0) {return 0}
+  for ( var i = len; i >=1 && !count; i--) {
+    for ( var index = 0; index <= len - i; index++) {
+      var sub = strArr.slice(index, i+index);
+      if ( checkReverse(sub) ) {
+         count = sub.length;
+         break
+      }
+    }
+  }
+  return count;
+}
+
+function checkReverse(arr) {
+  if ( arr.join('') === arr.slice().reverse().join('') )
+    return true
+  return false
+}
