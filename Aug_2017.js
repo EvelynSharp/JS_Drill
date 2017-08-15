@@ -234,3 +234,11 @@ const expandedForm2 = n => n.toString()
                             .filter(a => a > 0)
                             .reverse()
                             .join(" + ");
+
+
+//8.15.17
+// CamelCase Method
+String.prototype.camelCase=function(){
+  let arr = this.split(' ').map( s => s.charAt(0).toUpperCase() + s.slice(1) )
+  return arr.join('')
+}
