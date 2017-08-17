@@ -275,3 +275,13 @@ function shiftedDiff2(first, second) {
   if (first.length != second.length) return -1
   return (second + second).indexOf(first)
 }
+
+
+//8.17.17
+
+// Write a function, persistence, that takes in a positive parameter num and returns its multiplicative persistence, which is the number of times you must multiply the digits in num until you reach a single digit.
+function persistence(num, c = 0) {
+   if ( (''+ num).length > 1 )
+     return persistence( (''+ num).split('').reduce( (r, n) => r *= Number(n) , 1 ), c+1 )
+   return c
+}
