@@ -300,3 +300,14 @@ function averageString(str) {
   if ( arr.filter( n => !strArr.includes(n) ).length > 0 || str === '' ) { return "n/a" }
   return strArr[ Math.floor(arr.reduce( (t, n) => t += strArr.indexOf(n), 0)/arr.length) ]
 }
+
+
+//8.19.17
+// This kata is designed to test your ability to extend the functionality of built-in ruby classes. In this case, we want you to extend the built-in Array class with the following methods: square(), cube(), average(), sum(), even() and odd().
+
+Array.prototype.square = function() {return this.map( n => n *= n ) }
+Array.prototype.cube = function() {return this.map( n => Math.pow(n, 3) ) }
+Array.prototype.average = function() {return this.sum()/this.length }
+Array.prototype.sum = function() {return this.reduce( (t,n) => t += n, 0 ) }
+Array.prototype.even = function() {return this.filter( n => n%2 === 0 ) }
+Array.prototype.odd = function() {return this.filter( n => n%2 !== 0) }
