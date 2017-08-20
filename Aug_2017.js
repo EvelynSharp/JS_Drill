@@ -311,3 +311,31 @@ Array.prototype.average = function() {return this.sum()/this.length }
 Array.prototype.sum = function() {return this.reduce( (t,n) => t += n, 0 ) }
 Array.prototype.even = function() {return this.filter( n => n%2 === 0 ) }
 Array.prototype.odd = function() {return this.filter( n => n%2 !== 0) }
+
+
+
+//8.20.17
+// You get a "text" and have to shift the vowels by "n" positions to the right.
+// (Negative value for n should shift to the left.)
+// "Position" means the vowel's position if taken as one item in a list of all vowels within the string.
+// A shift by 1 would mean, that every vowel shifts to the place of the next vowel.
+//
+// Shifting over the edges of the text should continue at the other edge.
+//better with regular expression 
+function vowelShift(text, n) {
+  if ( text === '' || !text) {return text}
+  let vowels = ["a","e", "i", "o", "u"]
+  let arr = text.split('')
+  let vArr = arr.filter ( l => vowels.includes(l.toLowerCase()) )
+  let sArr = [];
+  vArr.map( (l, i) => {
+    sArr[ ( i + n )%vArr.length >= 0 ? ( i + n )%vArr.length : vArr.length + ( i + n )%vArr.length ] = l;
+  })
+  console.log(sArr);
+  let rArr = arr.map( l => {
+    if ( vowels.includes(l.toLowerCase()) )
+      return sArr.shift()
+    return l
+  })
+  return rArr.join('')
+}
