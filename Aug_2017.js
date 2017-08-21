@@ -321,7 +321,7 @@ Array.prototype.odd = function() {return this.filter( n => n%2 !== 0) }
 // A shift by 1 would mean, that every vowel shifts to the place of the next vowel.
 //
 // Shifting over the edges of the text should continue at the other edge.
-//better with regular expression 
+//better with regular expression
 function vowelShift(text, n) {
   if ( text === '' || !text) {return text}
   let vowels = ["a","e", "i", "o", "u"]
@@ -338,4 +338,25 @@ function vowelShift(text, n) {
     return l
   })
   return rArr.join('')
+}
+
+
+//8.21.17
+//Detect Pangram
+function isPangram(string){
+  let arr = string.toLowerCase().split('')
+  let alphaCount = [];
+  arr.map( l => {
+    let num = l.charCodeAt(0)
+    if ( num <= 122 && num >= 97 && !alphaCount.includes(num) ) { alphaCount.push(num) }
+  })
+  return alphaCount.length === 26
+}
+
+//string.every method 
+function isPangram1(string){
+  string = string.toLowerCase();
+  return "abcdefghijklmnopqrstuvwxyz".split("").every(function(x){
+    return string.indexOf(x) !== -1;
+  });
 }
