@@ -353,10 +353,26 @@ function isPangram(string){
   return alphaCount.length === 26
 }
 
-//string.every method 
+//string.every method
 function isPangram1(string){
   string = string.toLowerCase();
   return "abcdefghijklmnopqrstuvwxyz".split("").every(function(x){
     return string.indexOf(x) !== -1;
   });
+}
+
+
+//8.22.17
+// You'll implement once, a function that takes another function as an argument, and returns a new version of that function that can only be called once.
+//
+// Subsequent calls to the resulting function should have no effect (and should return undefined).
+
+function once(fn) {
+  let called = false;
+  return (...arguments) => {
+    if (!called ) {
+      called = true;
+      return fn.apply(this, arguments);
+    }
+  };
 }
