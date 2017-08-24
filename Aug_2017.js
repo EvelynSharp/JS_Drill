@@ -390,3 +390,15 @@ function takeWhile (arr, pred) {
   }
   return arr1;
 }
+
+
+//8.24.17
+// for i from 1 to n, do i % m and return the sum
+// You'll need to get a little clever with performance, since n can be a very large number
+function f(n, m) {
+  let rounds = Math.floor(n/m)
+  let roundSum = (m*(m-1)/2)*rounds
+  if(n%m === 0) {return roundSum}
+  let resiSum = (n%m)*(1+n%m)/2;
+  return roundSum+resiSum
+}
