@@ -402,3 +402,29 @@ function f(n, m) {
   let resiSum = (n%m)*(1+n%m)/2;
   return roundSum+resiSum
 }
+
+//8.25.17
+// #The values of the digits 3 and 7 are twisted. Our 3 means 7 on the planet Twisted-3-7. And 7 means 3.
+//
+// Your task is to create a method, that can sort an array the way it would be sorted on Twisted-3-7.
+
+function sortTwisted37(array) {
+  let arr = array.map( n => Number((''+n).replaceAll('7','*').replaceAll('3', '7').replaceAll('*', '3')) ).sort( (a, b) => a-b )
+  return arr.map( n => Number( (''+n).replaceAll('7', '*').replaceAll('3', '7').replaceAll('*', '3') ))
+}
+
+String.prototype.replaceAll = function(search, replacement) {
+    var target = this;
+    return target.split(search).join(replacement);
+};
+
+//put twisted action in the sorting action 
+function sortTwisted372(array) {
+  const MAPPING = {7:3,3:7};
+
+  return array.slice().sort((a,b) => twist(a) - twist(b));
+
+  function twist(number) {
+    return parseInt(number.toString().replace(/[37]/g,a=>MAPPING[a]));
+  }
+}
