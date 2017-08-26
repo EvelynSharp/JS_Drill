@@ -418,7 +418,8 @@ String.prototype.replaceAll = function(search, replacement) {
     return target.split(search).join(replacement);
 };
 
-//put twisted action in the sorting action 
+//put twisted action in the sorting action
+// Place all people in alphabetical order where Mothers are followed by their children.I.E "aAbaBb" => "AaaBbb".
 function sortTwisted372(array) {
   const MAPPING = {7:3,3:7};
 
@@ -428,3 +429,27 @@ function sortTwisted372(array) {
     return parseInt(number.toString().replace(/[37]/g,a=>MAPPING[a]));
   }
 }
+
+//8.26.17
+
+function findChildren(dancingBrigade){
+ let arr = dancingBrigade.toLowerCase().split('').sort()
+ let r = []
+ for ( let i = arr.length-1; i >= 0; i-- ) {
+   if ( arr[i] !== arr[i-1] ) {
+     r.unshift(arr[i].toUpperCase() )
+   } else {
+     r.unshift( arr[i] )
+   }
+ }
+ return r.join('')
+};
+
+
+function findChildren(dancingBrigade){
+
+  return dancingBrigade.split("")
+                       .sort((a,b)=>a.localeCompare(b,"kf",{caseFirst:"upper"}))
+                       .join("");
+
+};
