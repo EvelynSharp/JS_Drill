@@ -453,3 +453,20 @@ function findChildren(dancingBrigade){
                        .join("");
 
 };
+
+
+//8.27.17
+//Given a number, return a string with dash'-'marks before and after each odd integer, but do not begin or end the string with a dash mark.
+function dashatize(num) {
+  if ( !parseInt(num) || (''+num).length <= 1 ) { return ''+ num}
+  let arr =  (''+Math.abs(num)).split('')
+  return arr.map( (n,i) => {
+    if( Number(n)%2 !== 0  ) {
+      if ( i === arr.length - 1)
+        return arr[i-1]%2 === 0 ? (' ' + n) : n
+      return arr[i-1]%2 === 0 ? ' ' + n + ' ' : n + ' '
+    }  else {
+     return n
+    }
+  }).join('').split(' ').join('-')
+};
