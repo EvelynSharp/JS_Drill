@@ -470,3 +470,10 @@ function dashatize(num) {
     }
   }).join('').split(' ').join('-')
 };
+
+
+//8.28.17
+// Given an array of numbers, your function should return an array of arrays, where each subarray contains all the duplicates of a particular number. Subarrays should be in the same order as the first occurence of the number they contain:
+function group(arr) {
+  return [ ...new Set(arr) ].map( n => arr.filter( x => x === n ) )
+}
