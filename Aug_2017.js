@@ -476,4 +476,30 @@ function dashatize(num) {
 // Given an array of numbers, your function should return an array of arrays, where each subarray contains all the duplicates of a particular number. Subarrays should be in the same order as the first occurence of the number they contain:
 function group(arr) {
   return [ ...new Set(arr) ].map( n => arr.filter( x => x === n ) )
+
+  //8.29.17
+  Task
+
+// Two integer numbers are added using the column addition method. When using this method, some additions of digits produce non-zero carries to the next positions. Your task is to calculate the number of non-zero carries that will occur while adding the given numbers.
+
+// The numbers are added in base 10.
+  function numberOfCarries(a, b) {
+  let count = 0;
+  let aArr = (''+a).split('').map( n => Number(n) ).reverse();
+  let bArr = (''+b).split('').map( n => Number(n) ).reverse();
+  let length = aArr.length >= bArr.length ? aArr.length : bArr.length;
+  for ( let i = 0; i < length; i++) {
+    let a = aArr[i] ? aArr[i] : 0;
+    let b = bArr[i] ? bArr[i] : 0;
+    let newNum = a + b;
+    if ( newNum >= 10) {
+      count++
+      if(aArr.length >= bArr.length) {
+        aArr[i+1] += Math.floor(newNum/10)
+      } else {
+        bArr[i+1] += Math.floor(newNum/10)
+      }
+    }
+  }
+  return count
 }
