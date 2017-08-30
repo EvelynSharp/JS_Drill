@@ -503,3 +503,18 @@ function group(arr) {
   }
   return count
 }
+
+
+//8.30.17
+// Complete function `splitOddAndEven`, accept a number `n`(n>0), return an array that contains the continuous parts of odd or even digits.
+function splitOddAndEven(n) {
+  let arr = (''+n).split('').map( n => Number(n))
+  let count = 0;
+  for ( let i = 0; i <arr.length-1; i++) {
+     if( arr[i]%2 !== arr[i+1]%2) {
+       arr.splice(i+1, 0, '*')
+       i++
+     }
+  }
+  return arr.join('').split('*').map( n => Number(n))
+}
