@@ -23,7 +23,7 @@ var maxSequence = function(arr){
   let r = []
   for ( let i = 1; i <= arr.length; i++) {
     for ( let x = 0; x <= arr.length-i; x++ ) {
-      r.push(arr.slice(x,x+i).reduce( (t,n) => t += n, 0) )     
+      r.push(arr.slice(x,x+i).reduce( (t,n) => t += n, 0) )
     }
   }
   return Math.max(...r) >= 0 ? Math.max(...r) : 0
@@ -37,4 +37,23 @@ var maxSequence2 = function(arr){
     ans = Math.max(ans, sum - min);
   }
   return ans;
+}
+
+//9.3.17
+//longer code due to performance req
+// Write function scramble(str1,str2) that returns true if a portion of str1 characters can be rearranged to match str2, otherwise returns false.
+function scramble(str1, str2) {
+  let obj1 = {}, obj2 = {};
+  let arr1 = [ ...new Set(str1.split('')) ].map( l => {
+    re = new RegExp(l,'gi');
+    obj1[l] = str1.match(re) ? str1.match(re).length : 0
+  })
+  let arr2 = [ ...new Set(str2.split('')) ]
+  arr2.map( l => {
+    re = new RegExp(l,'gi');
+    obj2[l] = str2.match(re) ? str2.match(re).length : 0
+  })
+  return arr2.every( l => {
+    return obj1[l] >= obj2[l]
+  })
 }
