@@ -57,3 +57,23 @@ function scramble(str1, str2) {
     return obj1[l] >= obj2[l]
   })
 }
+
+//9.4.17
+//You are given an array strarr of strings and an integer k. Your task is to return the first longest string consisting of k consecutive strings taken in the array.
+
+
+
+function longestConsec(strarr, k) {
+   let max = 0;
+   if(strarr.length < k) { return ""}
+   return strarr.reduce( (r, v, i) => {
+     let str = '';
+     for ( let n = 0; n < k; n++) {
+       str += strarr[i+n]? strarr[i+n] : ''
+     }
+     if (str.length > max) {
+       max = str.length;
+       r = str;
+     }
+     return r;
+   }, '')
