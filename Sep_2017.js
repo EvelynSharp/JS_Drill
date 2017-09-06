@@ -86,3 +86,13 @@ var uniqueInOrder=function(iterable){
   let arr = Array.isArray(iterable) ? iterable : iterable.split('')
   return arr.filter( (l,i) =>  i === 0 || l !== arr[i-1] )
 }
+
+//9.6.17
+
+function narcissistic( value ) {
+  let numArr = String(value).split('').map( n => Number(n) );
+  let sum = numArr.reduce( (t, n) => {
+    return t += Math.pow( n, numArr.length)
+  }, 0)
+  return sum === value;
+}
