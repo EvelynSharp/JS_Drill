@@ -96,3 +96,10 @@ function narcissistic( value ) {
   }, 0)
   return sum === value;
 }
+
+//9.7.17
+// The purpose of this kata is to write a higher-order function which is capable of creating a function that iterates on a specified function a given number of times. This new functions takes in an argument as a seed to start the computation from.
+var createIterator = (func, n) => (arg) => {
+    for ( let i = 1; i <= n; i++) { arg = func(arg) };
+    return arg;
+  }
