@@ -103,3 +103,15 @@ var createIterator = (func, n) => (arg) => {
     for ( let i = 1; i <= n; i++) { arg = func(arg) };
     return arg;
   }
+
+//9.8.17
+// zipWith takes a function and two arrays and zips the arrays together, applying the function to every pair of values.
+// The function value is one new array.
+
+const zipWith = (fn,a0,a1) => a0.map( (n, i) =>  n !== undefined && a1[i] !== undefined ? fn(n, a1[i]) : '')
+.filter( n => n !== '' )
+
+//learn function Array.from
+function zipWith2(fn,a0,a1) {
+  return Array.from({length: Math.min(a0.length, a1.length)}, (_, i) => fn(a0[i], a1[i]));
+}
