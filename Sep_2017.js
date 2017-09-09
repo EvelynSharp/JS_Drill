@@ -115,3 +115,12 @@ const zipWith = (fn,a0,a1) => a0.map( (n, i) =>  n !== undefined && a1[i] !== un
 function zipWith2(fn,a0,a1) {
   return Array.from({length: Math.min(a0.length, a1.length)}, (_, i) => fn(a0[i], a1[i]));
 }
+
+//9.9.17
+// Complete the solution so that it returns true if it contains any duplicate argument values. Any number of arguments may be passed into the function. The solution should implement the most optimal algorithm possible.
+const solution = (...args) => args
+  .map( a => args.filter( x => x === a ).length)
+  .filter( a => a > 1).length > 0
+
+//use set when comparing arrays
+function solution2(){return new Set(arguments).size!=arguments.length;}
