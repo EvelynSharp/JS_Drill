@@ -124,3 +124,9 @@ const solution = (...args) => args
 
 //use set when comparing arrays
 function solution2(){return new Set(arguments).size!=arguments.length;}
+
+//9.10.17
+
+function getMiddle(s) {
+  return s.length%2 === 0? s[s.length/2 - 1] + s[s.length/2]  : s[ (s.length - 1 )/2 ]
+}
