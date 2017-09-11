@@ -130,3 +130,18 @@ function solution2(){return new Set(arguments).size!=arguments.length;}
 function getMiddle(s) {
   return s.length%2 === 0? s[s.length/2 - 1] + s[s.length/2]  : s[ (s.length - 1 )/2 ]
 }
+
+
+//9.11.17
+function shortenNumber(suffixes, base) {
+  return (arg) => {
+    const num = Number(arg)
+    let result = '';
+    if ( !num ) {return ''+arg}
+    [...suffixes].reverse().map( (u, i) => {
+      const r = Math.floor( num/Math.pow(base, suffixes.length-i-1) );
+      if( r > 0 && result === '' ) {result = r + u}
+    })
+    return result;
+  }
+}
