@@ -151,3 +151,40 @@ function shortenNumber(suffixes, base) {
 function createPhoneNumber(numbers){
   return  `(${numbers.slice(0,3).join('')}) ${numbers.slice(3,6).join('')}-${numbers.slice(6,10).join('')}`
 }
+
+//9.13.17
+//sum of pairs
+var sum_pairs=function(ints, s){
+  var seen = {}
+  for (var i = 0; i < ints.length; ++i) {
+    if (seen[s - ints[i]]) return [s - ints[i], ints[i]];
+    seen[ints[i]] = true
+  }
+}
+
+var sum_pairs1=function(ints, s){
+    let pairs = [], indexes = [], unique = [ ...new Set(ints)];
+    unique.map( (n,i) => {
+      const n2 = s-n;
+       if( unique.indexOf(n2) !== -1 && i <= unique.indexOf(n2) )  {
+        if( n === n2 ) {
+          if ( ints.filter( x => x === n ).length > 1 ) {
+            const arr = [...ints]
+            arr.splice(ints.indexOf(n), 1)
+            pairs.push( [n, n2] )
+            indexes.push( [ints.indexOf(n), arr.indexOf(n2) + 1] )
+          }
+        } else {
+          pairs.push( [n, n2] )
+          indexes.push( [ints.indexOf(n), ints.indexOf(n2)] )
+        }
+      }
+    })
+    let reIndex = 0;
+    if ( pairs.length > 1) {
+      indexes.map( ( p, i ) => {
+        if ( p[1] < indexes[reIndex][1] ) reIndex = i
+      })
+    }
+    return pairs[reIndex]
+}
