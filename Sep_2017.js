@@ -188,3 +188,15 @@ var sum_pairs1=function(ints, s){
     }
     return pairs[reIndex]
 }
+
+//9.14.17
+//Title Case
+function titleCase(title, minorWords) {
+  const minor = minorWords? minorWords.toLowerCase().split(' ').map( w => w.toLowerCase() ) : [];
+  return title.toLowerCase().split(' ').map( (w, i) => {
+    if ( i !== 0 && minor.includes(w))
+      return w
+    return w.charAt(0).toUpperCase() + w.substr(1)
+  }).join(' ');
+
+}
