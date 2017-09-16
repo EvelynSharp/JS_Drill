@@ -200,3 +200,25 @@ function titleCase(title, minorWords) {
   }).join(' ');
 
 }
+
+//9.15.17
+function groupCheck(s){
+  let arr = s.split('')
+  const match = { '{': '}', '(': ')', '[': ']' }
+  let r = true;
+  if(arr.length%2 !== 0) return false
+  for ( let i = 0; i < arr.length - 1;) {
+    if( match[arr[i]] === arr[i+1]) {
+      arr.splice(i,2)
+      i -= 1
+    } else {
+      if( ['{', '(', '['].includes(arr[i+1]) ) {
+        i++
+      } else {
+        r = false;
+        break
+      }
+    }
+  }
+  return r
+}
