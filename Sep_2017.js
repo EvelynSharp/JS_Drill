@@ -222,3 +222,22 @@ function groupCheck(s){
   }
   return r
 }
+
+
+//9.16.17
+/* Should return ᐃ type:
+  0 : if ᐃ cannot be made with given sides
+  1 : acute ᐃ
+  2 : right ᐃ
+  3 : obtuse ᐃ
+*/
+
+function triangleType(a, b, c){
+  const arr = [a, b, c].sort( (x,y) => x-y )
+  const num = Math.pow(arr[0],2) + Math.pow(arr[1],2), num3 = Math.pow(arr[2],2)
+  if ( arr[0] + arr[1] <= arr[2]) {return 0}
+  if(num===num3) return 2
+  if(num > num3) return 1
+  if(num < num3) return 3
+
+}
