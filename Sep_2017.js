@@ -241,3 +241,8 @@ function triangleType(a, b, c){
   if(num < num3) return 3
 
 }
+
+//9.17.17
+function descendingOrder(n){
+  return Number((''+n).split('').sort( (a,b) => b-a).join(''))
+}
