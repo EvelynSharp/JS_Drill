@@ -256,3 +256,17 @@ function isPrime(num) {
   }
   return num < 2 ? false : r;
 }
+
+//9.19.17
+function solution(str){
+  return String(str).split('').reduce( (r, l, i) => {
+    if(i%2===0) {
+      if(i === str.length-1) {
+        r.push(l + '_')
+      } else {
+        r.push( l + str[i+1])
+      }
+    }
+    return r
+  }, [] )
+}
