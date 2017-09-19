@@ -246,3 +246,13 @@ function triangleType(a, b, c){
 function descendingOrder(n){
   return Number((''+n).split('').sort( (a,b) => b-a).join(''))
 }
+
+//9.18.17
+
+function isPrime(num) {
+  let r = true;
+  for( let i = 2; i <num; i++ ) {
+    if( num%i === 0) { r = false}
+  }
+  return num < 2 ? false : r;
+}
