@@ -270,3 +270,10 @@ function solution(str){
     return r
   }, [] )
 }
+
+//9.20.19
+
+function spinWords(str){
+  const arr = str.split(' ')
+  return arr.map( s =>  s.length >= 5 ? s.split('').reverse().join('')  : s ).join(' ')
+}
