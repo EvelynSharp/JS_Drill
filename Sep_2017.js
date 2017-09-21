@@ -271,9 +271,40 @@ function solution(str){
   }, [] )
 }
 
-//9.20.19
+//9.20.17
 
 function spinWords(str){
   const arr = str.split(' ')
   return arr.map( s =>  s.length >= 5 ? s.split('').reverse().join('')  : s ).join(' ')
+}
+
+//9.21.17
+function tickets(peopleInLine){
+  let result = 'YES';
+  let r = { '25': 0, '50': 0 };
+  for ( let i = 0; i < peopleInLine.length; i++ ) {
+    const change = peopleInLine[i] - 25;
+    if (change === 75) {
+      if( r['25'] >= 1 && r['50'] >= 1 ) {
+        r['25']--;
+        r['50']--;
+      } else if ( r['25'] >= 3 ) {
+        r['25'] -= 3;
+      } else {
+        result = 'NO';
+        break
+      }
+    } else if (change === 25) {
+      if(r['25'] < 1) {
+        result = 'NO';
+        break
+      } else {
+        r['25']--;
+        r['50']++;
+      }
+    } else {
+      r['25']++;
+    }
+  }
+  return result
 }
