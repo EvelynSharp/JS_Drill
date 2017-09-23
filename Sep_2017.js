@@ -314,3 +314,15 @@ function findOutlier(integers){
   const ifEven = integers.filter( n => n%2 === 0).length > 1
   return ifEven? integers.filter(  n => n%2 !== 0)[0] :  integers.filter(  n => n%2 === 0)[0]
 }
+
+//9.23.17
+function findNb(m) {
+    let sum = 0;
+    for ( let i = 1; ; i++) {
+      sum += Math.pow(i, 3)
+      if( sum === m) {
+        return i
+      } else if ( sum > m  ) {
+        return -1
+      }
+    }
