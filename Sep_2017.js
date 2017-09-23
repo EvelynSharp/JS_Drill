@@ -308,3 +308,9 @@ function tickets(peopleInLine){
   }
   return result
 }
+
+//9.22.17
+function findOutlier(integers){
+  const ifEven = integers.filter( n => n%2 === 0).length > 1
+  return ifEven? integers.filter(  n => n%2 !== 0)[0] :  integers.filter(  n => n%2 === 0)[0]
+}
