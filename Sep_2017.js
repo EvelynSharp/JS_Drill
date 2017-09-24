@@ -326,3 +326,10 @@ function findNb(m) {
         return -1
       }
     }
+
+
+//9.24.17
+
+function songDecoder(song){
+  return song.split('WUB').filter( s => s !== '').join(' ')
+}
