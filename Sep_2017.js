@@ -349,3 +349,14 @@ function likes(names) {
       return `${names[0]}, ${names[1]} and ${names.length-2} others like this`;
   }
 }
+
+//9.26.17
+function toWeirdCase(string){
+  return string.split(' ').map( s => {
+    return s.split('').map( (l, i) => {
+      if ( i%2 === 0)
+        return l.toUpperCase()
+      return l.toLowerCase()
+    }).join('')
+  }).join(' ')
+}
