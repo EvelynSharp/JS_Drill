@@ -360,3 +360,8 @@ function toWeirdCase(string){
     }).join('')
   }).join(' ')
 }
+
+//9.27.17
+function inArray(array1,array2){
+  return array1.sort().filter( str => array2.join(' ').includes(str) )
+}
