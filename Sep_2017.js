@@ -365,3 +365,16 @@ function toWeirdCase(string){
 function inArray(array1,array2){
   return array1.sort().filter( str => array2.join(' ').includes(str) )
 }
+
+//9.28.17
+
+function getLengthOfMissingArray(arrayOfArrays) {
+  if ( arrayOfArrays == null || arrayOfArrays.includes(null) || arrayOfArrays.filter( n => n.length === 0 ).length > 0) { return 0 }
+  const lArr = arrayOfArrays.map( a => a.length).sort( (a,b) => a-b ) || [];
+  let r = 0;
+  lArr.map( (n, i) => {
+    if ( lArr[i+1] === n + 2 )
+      r = n + 1
+  })
+  return r;
+}
