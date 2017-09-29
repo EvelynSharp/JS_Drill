@@ -378,3 +378,9 @@ function getLengthOfMissingArray(arrayOfArrays) {
   })
   return r;
 }
+
+//9.29.17
+
+function reverseWords(str) {
+  return str.split(' ').map( str => str.split('').reverse().join('')).join(' ')
+}
