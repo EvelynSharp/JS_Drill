@@ -384,3 +384,16 @@ function getLengthOfMissingArray(arrayOfArrays) {
 function reverseWords(str) {
   return str.split(' ').map( str => str.split('').reverse().join('')).join(' ')
 }
+
+//9.30.17
+function multiplicationTable(row,col){
+  let arr = [];
+  for ( let i = 1; i <= row; i++ ) {
+    let r = [];
+    for ( let n = 1; n <= col; n++) {
+      r.push( i*n )
+    }
+    arr.push(r)
+  }
+  return arr
+}
