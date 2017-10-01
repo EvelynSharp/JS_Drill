@@ -397,3 +397,8 @@ function multiplicationTable(row,col){
   }
   return arr
 }
+
+//10.1.17
+function reverseWords(str){
+  return str.split(' ').reverse().join(' ')
+}
