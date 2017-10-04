@@ -18,3 +18,10 @@ function sortTheInnerContent(words) {
     return a.join('')
   }).join(' ')
 }
+
+//10.4.17
+function autocomplete(input, dictionary){
+  input = input.replace(/[^a-zA-Z ]/g, "")
+  const result = dictionary.filter( str => str.slice(0, input.length).toLowerCase() === input )
+  return result.length > 5 ? result.slice(0, 5) : result
+}
