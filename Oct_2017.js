@@ -7,3 +7,14 @@ function count (string) {
   string.split('').map( l =>  r[l]++ )
   return r
 }
+//10.3.17
+function sortTheInnerContent(words) {
+  return words.split(' ').map( str => {
+    const strArr = str.split('')
+    if( str.length <= 1) return str
+    let a = strArr.slice(1, strArr.length - 1).sort().reverse();
+    a.push( strArr[strArr.length - 1])
+    a.unshift( strArr[0] )
+    return a.join('')
+  }).join(' ')
+}
