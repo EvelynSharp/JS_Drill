@@ -25,3 +25,18 @@ function autocomplete(input, dictionary){
   const result = dictionary.filter( str => str.slice(0, input.length).toLowerCase() === input )
   return result.length > 5 ? result.slice(0, 5) : result
 }
+
+//10.5.17
+function decipherThis(str) {
+  return str.split(' ').map( s => {
+    if (s.length === 1) return s;
+    const firstl = String.fromCharCode(parseInt(s))
+    if (s.length === 2) return firstl;
+    let word =  s.slice( (''+ parseInt(s)).length, s.length).split('')
+    let temp = word[0];
+    word[0] = word[ word.length - 1];
+    word[word.length - 1] = temp;
+    return firstl + word.join('')
+
+  }).join(' ')
+}; 
