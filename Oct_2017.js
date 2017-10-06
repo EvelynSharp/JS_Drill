@@ -39,4 +39,13 @@ function decipherThis(str) {
     return firstl + word.join('')
 
   }).join(' ')
-}; 
+};
+
+//10.6.17
+function add(n){
+  let fnc = (x) => {
+    return add(x+n)
+  }
+  fnc.valueOf = () => n
+  return fnc
+}
