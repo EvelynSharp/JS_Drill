@@ -49,3 +49,19 @@ function add(n){
   fnc.valueOf = () => n
   return fnc
 }
+
+//10.7.17
+String.prototype.toJadenCase = function () {
+ return this.split(' ').map( str => {
+   return str.split('').map( (l,i) => {
+      return i === 0 ? l.toUpperCase() : l.toLowerCase()
+   }).join('')
+ }).join(' ')
+
+};
+
+String.prototype.toJadenCase = function () {
+  return this.split(" ").map(function(word){
+    return word.charAt(0).toUpperCase() + word.slice(1);
+  }).join(" ");
+}
