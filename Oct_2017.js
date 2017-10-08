@@ -65,3 +65,9 @@ String.prototype.toJadenCase = function () {
     return word.charAt(0).toUpperCase() + word.slice(1);
   }).join(" ");
 }
+
+//10.8.17
+function squareDigits(num){
+  return Number((''+num).split('').map( n => Math.pow(Number(n),2)).join(''))
+
+}
