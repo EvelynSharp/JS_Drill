@@ -71,3 +71,22 @@ function squareDigits(num){
   return Number((''+num).split('').map( n => Math.pow(Number(n),2)).join(''))
 
 }
+
+//10.9.17
+function deepCount(a){
+  let r = count(a);
+  if (a.length === 0) return 0;
+  return r - 1;
+}
+
+function count(a) {
+  let counter = 0;
+  if( Array.isArray(a) ) {
+    counter =  a.reduce( (acc, n) => {
+      return acc + count(n)
+    }, 1)
+  } else {
+    counter = 1;
+  }
+  return counter ;
+}
