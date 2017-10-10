@@ -90,3 +90,18 @@ function count(a) {
   }
   return counter ;
 }
+
+//10.10.17
+function sumConsecutives(s) {
+  let result = [];
+  s.map( (x, i) => {
+    if( i === 0) {
+      result.push(x);
+    } else if ( x !== s[i-1] ) {
+      result.push(x)
+    } else if ( x === s[i-1]) {
+      result[result.length - 1] += x
+    }
+  })
+  return result
+}
