@@ -105,3 +105,35 @@ function sumConsecutives(s) {
   })
   return result
 }
+
+//10.11.17
+
+function findRarestPepe(pepes) {
+  let counter = {};
+  let result = [];
+  let minCount = 5;
+  [ ...new Set(pepes) ].map( p => {counter[p] = pepes.filter( n => n===p).length})
+  for ( let props in counter) {
+    if( counter[props] < minCount) {
+      if(result.length === 0 || counter[props] === counter[result[0]] ) {
+        result.push(props)
+      } else if ( counter[props] < counter[result[0]] ) {
+        result = [];
+        result.push(props)
+      }
+    }
+  }
+  if ( result.length === 0 ) return  'No rare pepes!';
+  if ( result.length === 1 ) return  result[0];
+  result.sort()
+  return result
+}
+
+function findRarestPepe(a) {
+  let o={};
+  a.forEach(x=>o[x]?o[x]++:o[x]=1);
+  let ma = Object.keys(o).reduce((m,x)=>Math.min(m,o[x]),999);
+  if(ma>4) return 'No rare pepes!';
+  let z = Object.keys(o).filter(x=>o[x]==ma).sort();
+  return z.length==1?z[0]:z;
+}
