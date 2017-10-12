@@ -137,3 +137,22 @@ function findRarestPepe(a) {
   let z = Object.keys(o).filter(x=>o[x]==ma).sort();
   return z.length==1?z[0]:z;
 }
+
+//10.12.17
+function nextBigger(n){
+  const arr = (''+n).split('').map( n => Number(n) )
+  let result = -1;
+  for ( let i = arr.length - 2; i >= 0; i--) {
+    let remain = arr.slice(i, arr.length)
+    let maxnum = Math.max(...remain)
+    if(arr[i] < maxnum) {
+      let bigger = remain.reduce( (b, n) => {
+        return n-arr[i]>0 && n < b ? n:  b
+      }, 10)
+      remain.splice(remain.indexOf(bigger), 1)
+      result = Number(arr.slice(0, i).join('') + bigger + [...remain].sort().join(''))
+      break
+    }
+  }
+  return result;
+}
