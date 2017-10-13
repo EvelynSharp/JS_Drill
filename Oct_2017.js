@@ -156,3 +156,11 @@ function nextBigger(n){
   }
   return result;
 }
+
+//10.13.17
+function toCamelCase(str){
+  const divider = str.split('').includes('_') ? '_' : '-'
+  return str.split(divider)[0] + str.split(divider).slice(1).map( (s, i) => {
+    return s.split('').map( (l,i) => {return i === 0? l.toUpperCase() : l}).join('')
+  }).join('')
+}
