@@ -164,3 +164,18 @@ function toCamelCase(str){
     return s.split('').map( (l,i) => {return i === 0? l.toUpperCase() : l}).join('')
   }).join('')
 }
+
+
+function service(serviceTypes, services) {
+  serviceTypes.map( type => {
+    type.services = services.filter( service => service.service_type_id === type.id )
+    return type
+  })
+}
+
+
+//10.14.17
+
+function longest(s1, s2) {
+  return [...new Set( [...s1.split(''), ...s2.split('') ])].sort().join('')
+}
