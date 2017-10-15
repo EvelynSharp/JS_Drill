@@ -179,3 +179,9 @@ function service(serviceTypes, services) {
 function longest(s1, s2) {
   return [...new Set( [...s1.split(''), ...s2.split('') ])].sort().join('')
 }
+
+//10.15.17
+function highAndLow(numbers){
+  const num = numbers.split(' ').map( n => Number(n))
+  return Math.max(...num) + ' ' + Math.min(...num)
+}
