@@ -185,3 +185,12 @@ function highAndLow(numbers){
   const num = numbers.split(' ').map( n => Number(n))
   return Math.max(...num) + ' ' + Math.min(...num)
 }
+
+//10.16.17
+function narcissistic( value ) {
+  let numArr = String(value).split('').map( n => Number(n) );
+  let sum = numArr.reduce( (t, n) => {
+    return t += Math.pow( n, numArr.length)
+  }, 0)
+  return sum === value;
+}
