@@ -206,3 +206,11 @@ function whatIsJohnDoing(startDay, today){
     return pos%5 > 3 || pos%5 === 0 || pos === 15 ? status[1] : status[0]
   }
 }
+
+//10.18.17
+function getCount(str) {
+  const vowel = ['a', 'e', 'i', 'o', 'u']
+  return str.split('').reduce( (t,l) => {
+    return vowel.includes(l) ? t+1 : t
+  }, 0)
+}
