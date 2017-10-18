@@ -194,3 +194,15 @@ function narcissistic( value ) {
   }, 0)
   return sum === value;
 }
+
+//10.17.17
+function whatIsJohnDoing(startDay, today){
+  const status = [ 'Fishing', 'Airing net', 'Selling fish']
+  const days = Math.round( (new Date(today)-new Date(startDay))/(1000*60*60*24) ) + 1
+  const pos = days%16;
+  if (  pos === 14 ) {
+    return status[2]
+  } else {
+    return pos%5 > 3 || pos%5 === 0 || pos === 15 ? status[1] : status[0]
+  }
+}
