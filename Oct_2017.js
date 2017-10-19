@@ -214,3 +214,10 @@ function getCount(str) {
     return vowel.includes(l) ? t+1 : t
   }, 0)
 }
+
+//10.19.17
+decodeMorse = function(morseCode){
+  return morseCode.split('   ').map( str => {
+    return str.split(' ').map( l => MORSE_CODE[l]).join('')
+  }).join(' ').replace(/^\s+|\s+$/g, "");
+}
