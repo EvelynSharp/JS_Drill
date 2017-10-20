@@ -221,3 +221,13 @@ decodeMorse = function(morseCode){
     return str.split(' ').map( l => MORSE_CODE[l]).join('')
   }).join(' ').replace(/^\s+|\s+$/g, "");
 }
+
+//10.20.17
+
+function digPow(n, p){
+  let nArr = String(n).split('');
+  let sum = nArr.reduce( (total, num, index) => {
+    return total += Math.pow( Number(num), (p+index) )
+  }, 0)
+  return sum%n === 0 ? sum/n : -1;
+}
