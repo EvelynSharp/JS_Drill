@@ -231,3 +231,15 @@ function digPow(n, p){
   }, 0)
   return sum%n === 0 ? sum/n : -1;
 }
+
+
+//10.21.17
+function 2(word){
+  return word
+    .toLowerCase()
+    .split('')
+    .map( function (a, i, w) {
+      return w.indexOf(a) == w.lastIndexOf(a) ? '(' : ')'
+    })
+    .join('');
+}
