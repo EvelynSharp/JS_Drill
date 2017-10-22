@@ -243,3 +243,13 @@ function 2(word){
     })
     .join('');
 }
+
+//10.22.17
+
+function GetSum( a,b ) {
+  let sum = 0;
+  for ( let i = Math.min(a, b); i <= Math.max(a, b); i++ ) {
+    sum += i
+  }
+  return sum
+}
