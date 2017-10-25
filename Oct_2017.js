@@ -263,3 +263,13 @@ function kebabize(str) {
 function reduceByRules(numbers, rules) {
   return numbers.reduce( (r, n, i) => i < numbers.length -1 ? rules[i%(rules.length)](r, numbers[i+1]) : r, numbers[0])
 }
+
+//10.25.17
+function pizzaRewards(customers, minOrders, minPrice) {
+let result = []
+  for ( let props in customers) {
+    if (customers[props].filter( n => n >= minPrice).length >= minOrders)
+      result.push(props)
+  }
+  return result
+}
