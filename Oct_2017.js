@@ -258,3 +258,8 @@ function GetSum( a,b ) {
 function kebabize(str) {
   return str.replace(/[0-9]/g, '').split(/(?=[A-Z])/).map( s => s.toLowerCase() ).join('-')
 }
+
+//10.24.17
+function reduceByRules(numbers, rules) {
+  return numbers.reduce( (r, n, i) => i < numbers.length -1 ? rules[i%(rules.length)](r, numbers[i+1]) : r, numbers[0])
+}
