@@ -284,3 +284,21 @@ function palindrome(num) {
     if(isPalindrome(num-i)) return num-i;
   }
 }
+
+//10.27
+function withdraw(n) {
+  let result = [];
+  if ( n%100 < 50 && (n%100)%20 !== 0 ) {
+      result.push(Math.floor(n/100)-1)
+  } else {
+    result.push(Math.floor(n/100))
+  }
+  let remain = n-result[0]*100;
+  if ( (remain%50)%20 !== 0 ) {
+      result.push( Math.floor(remain/50)-1)
+  } else {
+    result.push( Math.floor(remain/50))
+  }
+  result.push( (remain-result[1]*50)/20 )
+  return result
+}
