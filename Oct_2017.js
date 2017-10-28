@@ -302,3 +302,11 @@ function withdraw(n) {
   result.push( (remain-result[1]*50)/20 )
   return result
 }
+
+//10.28
+
+let sc = (a) => {
+  let r;
+  a.map((s,i)=> s.includes("B") ? r=[i,s.indexOf("B")] : 1);
+  return r;
+}
