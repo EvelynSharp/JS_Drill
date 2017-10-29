@@ -310,3 +310,19 @@ let sc = (a) => {
   a.map((s,i)=> s.includes("B") ? r=[i,s.indexOf("B")] : 1);
   return r;
 }
+
+//10.29
+
+function zeros (n) {
+ const count5 = count(n, 5);
+ const count2 = count(n, 2);
+ return Math.min(count5, count2)
+}
+
+function count (num, countby) {
+  let result = 0;
+  for ( let i = countby; i <= num; i*=countby) {
+    result += Math.floor(num/i)
+  }
+  return result;
+}
