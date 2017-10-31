@@ -326,3 +326,16 @@ function count (num, countby) {
   }
   return result;
 }
+
+//10.30
+function solution(digits){
+  const arr = digits.split('').map( n => Number(n) )
+  const maxNum = Math.max(...arr)
+  let r = [];
+  arr.map((num, i) => {
+    if( num === maxNum && i < arr.length-4 ) {
+        r.push( Number( ''+num+arr[i+1]+arr[i+2]+arr[i+3]+arr[i+4]) )
+    }
+  })
+  return Math.max(...r)
+}
