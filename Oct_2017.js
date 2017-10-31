@@ -339,3 +339,17 @@ function solution(digits){
   })
   return Math.max(...r)
 }
+
+//10.31.17
+function listSquared(m, n) {
+  let result = [];
+  for ( let i = m; i <= n; i++) {
+    let divisors = [];
+    for ( let x = 1; x <= i; x++) {
+      if ( i%x === 0 ) divisors.push(x)
+    }
+    let sum = divisors.reduce( (t,num) => t += Math.pow(num,2), 0)
+    if ( Math.pow( sum, 1/2)%1 === 0 ) result.push( [i, sum] )
+  }
+  return result
+}
