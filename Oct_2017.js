@@ -358,3 +358,17 @@ function listSquared(m, n) {
 var moveZeros = function (arr) {
   return [ ...arr.filter( x => x !== 0 ), ...arr.filter( x => x === 0 ) ]
 }
+
+//11.2.17
+function cakes(recipe, available) {
+  let result = [];
+  for ( let props in recipe) {
+    if (!available[props]) {
+      result.push(0)
+      break
+     }
+    result.push( Math.floor(available[props]/recipe[props]) )
+  }
+
+  return Math.min(...result);
+}
