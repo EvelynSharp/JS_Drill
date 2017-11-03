@@ -372,3 +372,16 @@ function cakes(recipe, available) {
 
   return Math.min(...result);
 }
+
+//11.3.17
+var isPP = function(n){
+  let power = [];
+  for ( let i = 2; i <= n/2 ; i++) {
+    const root = Math.round(Math.pow(n,1/i));
+    if (Math.pow(root, i) === n) {
+      power.push([root,i])
+      break
+    }
+  }
+  return power.length > 0 ? power[0] : null; // fix me
+}
