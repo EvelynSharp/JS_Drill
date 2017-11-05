@@ -385,3 +385,15 @@ var isPP = function(n){
   }
   return power.length > 0 ? power[0] : null; // fix me
 }
+
+//11.4.17
+
+function countArara(n) {
+    let resultArr = [];
+    for ( let i = 1; i <= Math.floor(n/2); i++) {
+      resultArr.push('adak')
+    }
+    if ( n%2 !== 0)
+      resultArr.push('anane')
+    return resultArr.join(' ')
+}
