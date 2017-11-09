@@ -37,3 +37,16 @@ function makedir(str) {
   return dir;
 }
 //should use sort , join, for exact match of strings
+
+//11.8.19
+function takeWhile (arr, pred) {
+  let result = [];
+  for ( let i = 0; i < arr.length; i++) {
+    if(pred(arr[i])) {
+      result.push(arr[i])
+    } else {
+      break
+    }
+  }
+  return result
+}
