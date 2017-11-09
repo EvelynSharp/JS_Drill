@@ -50,3 +50,31 @@ function takeWhile (arr, pred) {
   }
   return result
 }
+
+//11.9.19
+function sum(x) {
+  const nil = a => a == undefined;
+  return nil(x) ? 0 : n => nil(n) ? x : sum(n + x);
+}
+
+function sum2(a = 0) {
+    function f (b = 0) {
+        return (a += b, arguments.length ? f : a);
+    }
+
+    return arguments.length ? f : a;
+}
+
+let total = 0;
+
+function sum2(num) {
+  if (num || num === 0) {
+    total += num
+    return (arg) => sum(arg)
+  } else {
+    const result = total;
+    total = 0;
+    return result;
+  }
+
+}
