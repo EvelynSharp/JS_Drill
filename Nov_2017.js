@@ -78,3 +78,16 @@ function sum2(num) {
   }
 
 }
+
+//11.10.19
+
+function humanReadable(seconds) {
+  const time = [];
+  const remain = seconds%3600
+  const convert = num => String(num).length === 1 ? '0'+ num : String(num);
+  time.push( convert(Math.floor(seconds/3600) ));
+  time.push( convert(Math.floor(remain/60) ));
+  time.push( convert(remain%60))
+  return time.join(':')
+
+}
