@@ -91,3 +91,7 @@ function humanReadable(seconds) {
   return time.join(':')
 
 }
+
+function findOdd(A) {
+  return [...new Set(A)].find( n => A.filter( num => num === n ).length%2 !== 0)
+}
