@@ -95,3 +95,9 @@ function humanReadable(seconds) {
 function findOdd(A) {
   return [...new Set(A)].find( n => A.filter( num => num === n ).length%2 !== 0)
 }
+
+//11.11.19
+function isIsogram(str){
+  const str1 = [...new Set(str.toLowerCase().split('').sort())].join('')
+  return str.toLowerCase().split('').sort().join('') === str1 ? true : false
+}
