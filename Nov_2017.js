@@ -101,3 +101,10 @@ function isIsogram(str){
   const str1 = [...new Set(str.toLowerCase().split('').sort())].join('')
   return str.toLowerCase().split('').sort().join('') === str1 ? true : false
 }
+
+//11.12.19
+function compose(f,g) {
+  return function(...a) {
+    return f( g(...a) )
+  }
+}
