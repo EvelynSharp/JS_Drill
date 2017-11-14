@@ -108,3 +108,13 @@ function compose(f,g) {
     return f( g(...a) )
   }
 }
+
+//11.13.17
+
+function count (string) {
+  const unique = [ ...new Set( string.split('') ) ]
+  let r = {}
+  unique.map( l => r[l] = 0 )
+  string.split('').map( l =>  r[l]++ )
+  return r
+}
