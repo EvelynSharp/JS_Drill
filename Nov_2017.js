@@ -118,3 +118,13 @@ function count (string) {
   string.split('').map( l =>  r[l]++ )
   return r
 }
+
+//11.14.17
+
+function kira(a, b, c) {
+ const remainder = a.reduce((m,n,i) => {
+    return n%b[i] > m ? n%b[i] : m
+  }, 0)
+ return remainder%2 === 0 ? c.toLowerCase() : c.toUpperCase()
+
+}
