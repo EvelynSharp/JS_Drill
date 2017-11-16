@@ -128,3 +128,14 @@ function kira(a, b, c) {
  return remainder%2 === 0 ? c.toLowerCase() : c.toUpperCase()
 
 }
+
+//11.15.17
+function capitalize(s,arr){
+  const sArr = s.split('');
+  arr.map( n => {
+    if(sArr[n]) {
+      sArr[n] = sArr[n].toUpperCase()
+    }
+  })
+  return sArr.join('');
+};
