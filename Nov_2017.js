@@ -139,3 +139,16 @@ function capitalize(s,arr){
   })
   return sArr.join('');
 };
+
+//11.16.17
+
+function timeConvert(num) {
+  if (num<=0) return "00:00"
+  let hour = Math.floor(num/60)
+  hour = hour < 10 ? "0"+hour : "" + hour
+  let min = num%60
+  min = min < 10 ? "0"+min : "" + min
+  return `${hour}:${min}`
+
+
+}
