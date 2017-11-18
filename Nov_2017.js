@@ -152,3 +152,12 @@ function timeConvert(num) {
 
 
 }
+
+//11.17
+function findShort(s){
+ return s.split(' ').reduce( (l, w) => {
+    if(w.length > l)
+      return l
+    return w.length
+  }, 100)
+}
