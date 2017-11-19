@@ -161,3 +161,11 @@ function findShort(s){
     return w.length
   }, 100)
 }
+
+//11.18
+
+function compose(f, g) {
+  return function() {
+    return f(g.apply(this, arguments));
+  };
+}
