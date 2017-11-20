@@ -169,3 +169,9 @@ function compose(f, g) {
     return f(g.apply(this, arguments));
   };
 }
+//11/19
+function autocomplete(input, dictionary){
+  input = input.replace(/[^a-zA-Z ]/g, "")
+  const result = dictionary.filter( str => str.slice(0, input.length).toLowerCase() === input )
+  return result.length > 5 ? result.slice(0, 5) : result
+}
