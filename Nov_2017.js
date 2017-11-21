@@ -175,3 +175,11 @@ function autocomplete(input, dictionary){
   const result = dictionary.filter( str => str.slice(0, input.length).toLowerCase() === input )
   return result.length > 5 ? result.slice(0, 5) : result
 }
+
+
+//11.20
+function solve(a){
+  const even = a.filter( x => Number.isInteger(x) && x%2 === 0).length
+  const odd = a.filter( x => Number.isInteger(x) && x%2 !== 0).length
+   return even - odd
+};
