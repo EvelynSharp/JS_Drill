@@ -183,3 +183,8 @@ function solve(a){
   const odd = a.filter( x => Number.isInteger(x) && x%2 !== 0).length
    return even - odd
 };
+
+//11.21
+function solve(a,b){
+  return b.map( w => a.filter( x => x === w).length)
+}
