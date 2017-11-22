@@ -188,3 +188,9 @@ function solve(a){
 function solve(a,b){
   return b.map( w => a.filter( x => x === w).length)
 }
+
+//11.22
+String.prototype.camelCase=function(){
+  let arr = this.split(' ').map( s => s.charAt(0).toUpperCase() + s.slice(1) )
+  return arr.join('')
+}
