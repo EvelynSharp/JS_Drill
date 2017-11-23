@@ -194,3 +194,11 @@ String.prototype.camelCase=function(){
   let arr = this.split(' ').map( s => s.charAt(0).toUpperCase() + s.slice(1) )
   return arr.join('')
 }
+
+//11.23
+function averageString(str) {
+  const strArr = ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"]
+  let arr = str.split(' ')
+  if ( arr.filter( n => !strArr.includes(n) ).length > 0 || str === '' ) { return "n/a" }
+  return strArr[ Math.floor(arr.reduce( (t, n) => t += strArr.indexOf(n), 0)/arr.length) ]
+}
