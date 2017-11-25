@@ -202,3 +202,12 @@ function averageString(str) {
   if ( arr.filter( n => !strArr.includes(n) ).length > 0 || str === '' ) { return "n/a" }
   return strArr[ Math.floor(arr.reduce( (t, n) => t += strArr.indexOf(n), 0)/arr.length) ]
 }
+
+
+//11.24
+function isPangram1(string){
+  string = string.toLowerCase();
+  return "abcdefghijklmnopqrstuvwxyz".split("").every(function(x){
+    return string.indexOf(x) !== -1;
+  });
+}
