@@ -211,3 +211,9 @@ function isPangram1(string){
     return string.indexOf(x) !== -1;
   });
 }
+
+//11.26
+String.prototype.replaceAll = function(search, replacement) {
+    var target = this;
+    return target.split(search).join(replacement);
+};
