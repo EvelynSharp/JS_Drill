@@ -217,3 +217,10 @@ String.prototype.replaceAll = function(search, replacement) {
     var target = this;
     return target.split(search).join(replacement);
 };
+
+
+//11.30
+var uniqueInOrder=function(iterable){
+  let arr = Array.isArray(iterable) ? iterable : iterable.split('')
+  return arr.filter( (l,i) =>  i === 0 || l !== arr[i-1] )
+}
