@@ -224,3 +224,10 @@ var uniqueInOrder=function(iterable){
   let arr = Array.isArray(iterable) ? iterable : iterable.split('')
   return arr.filter( (l,i) =>  i === 0 || l !== arr[i-1] )
 }
+
+//12.1
+
+var createIterator = (func, n) => (arg) => {
+    for ( let i = 1; i <= n; i++) { arg = func(arg) };
+    return arg;
+  }
