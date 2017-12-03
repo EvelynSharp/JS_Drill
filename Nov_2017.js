@@ -231,3 +231,16 @@ var createIterator = (func, n) => (arg) => {
     for ( let i = 1; i <= n; i++) { arg = func(arg) };
     return arg;
   }
+
+
+//12.2
+
+class Vector{
+  constructor(x, y) {
+    this.x = x;
+    this.y = y;
+  }
+  add(addition) {
+    return new Vector(this.x + addition.x, this.y + addition.y)
+  }
+}
