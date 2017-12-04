@@ -244,3 +244,18 @@ class Vector{
     return new Vector(this.x + addition.x, this.y + addition.y)
   }
 }
+//12.3
+
+function startSmoking(bars,boxes){
+  let amt = 10*18*bars + 18*boxes;
+  return amt + createAmt(amt, 0);
+}
+
+function createAmt(ends, acc) {
+  if(ends < 5) {
+    return acc
+  } else {
+    const newEnds = Math.floor(ends/5)
+    return createAmt( newEnds+ends%5, acc+newEnds)
+  }
+}
