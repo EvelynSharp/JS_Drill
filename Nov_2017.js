@@ -259,3 +259,10 @@ function createAmt(ends, acc) {
     return createAmt( newEnds+ends%5, acc+newEnds)
   }
 }
+
+//12.4
+function evenLast(numbers) {
+  if (numbers.length < 1) return 0
+  return numbers.reduce( (t,n,i) => i%2 === 0? t+n : t, 0)*numbers[numbers.length-1]
+
+}
